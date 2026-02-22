@@ -204,7 +204,7 @@ export default function AdminMenus() {
           ) : items.length === 0 ? (
             <p className="text-center text-muted-foreground py-12">No items found for this batch.</p>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-6 px-6">
               {Object.keys(itemsByDay)
                 .map(Number)
                 .sort((a, b) => a - b)
