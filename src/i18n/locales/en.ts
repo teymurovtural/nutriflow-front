@@ -2,15 +2,17 @@ const en = {
   nav: {
     howItWorks: "How it works",
     pricing: "Pricing",
+    about: "About",
     faq: "FAQ",
     login: "Login",
     getStarted: "Get started",
   },
   hero: {
     badge: "Personalized Nutrition + Catering Delivery",
-    title: "Your personal monthly meal plan, delivered daily",
-    subtitle:
-      "Expert dietitians create custom monthly menus based on your health goals. Fresh meals delivered to your door every day.",
+    titleStart: "Personalized ",
+    titleHighlight: "Nutrition",
+    titleEnd: ", Simplified",
+    subtitle: "NutriFlow builds your nutrition plan around real data, not trends.",
     cta: "Start your journey",
     viewPricing: "View pricing",
   },
@@ -76,44 +78,44 @@ const en = {
   },
   howItWorks: {
     title: "How it works",
-    subtitle: "Get started in 4 simple steps",
+    subtitle: "NutriFlow builds your nutrition plan around real data, not trends.",
+    tagline: "Healthy eating should feel structured, not stressful.",
     steps: [
       {
-        title: "Create your account",
-        description: "Sign up and verify your email in seconds.",
+        title: "Tell us about yourself",
+        description: "Share your goals, dietary preferences, allergies, activity level, and lifestyle.",
       },
       {
-        title: "Submit health data",
-        description:
-          "Share your health metrics, goals, dietary restrictions, and delivery preferences.",
+        title: "Smart plan creation",
+        description: "Our system generates a balanced meal plan tailored to your calorie needs, macros, and health targets.",
       },
       {
-        title: "Get your personalized menu",
-        description:
-          "A certified dietitian reviews your profile and creates a custom monthly meal plan (24-48h).",
+        title: "Fresh meal delivery",
+        description: "Meals are prepared and delivered on your schedule, ready to heat and enjoy.",
       },
       {
-        title: "Enjoy daily deliveries",
-        description:
-          "Fresh meals delivered to your door every day. Track status and manage your subscription easily.",
+        title: "Track and optimize",
+        description: "Monitor progress inside the app. Adjust goals anytime. Your plan evolves with you.",
       },
     ],
   },
   pricingPreview: {
     title: "Simple, transparent pricing",
     subtitle: "One plan, everything included",
-    planName: "Monthly Premium",
-    planDescription: "Complete nutrition & delivery service",
+    planName: "Premium Plan",
+    planDescription: "A fully personalized nutrition experience designed for serious results.",
     price: "1500",
     currency: "AZN/month",
     features: [
-      "Personalized monthly menu",
-      "Certified dietitian consultation",
-      "Daily meal delivery (30 days)",
-      "Real-time delivery tracking",
-      "Macro & calorie tracking",
-      "24/7 customer support",
+      "Custom meal plan tailored to your goals and health data",
+      "Daily fresh meal delivery",
+      "Macro and calorie precision",
+      "Ongoing plan adjustments",
+      "In-app progress tracking",
+      "Priority customer support",
     ],
+    note: "This is not a generic subscription. It is structured, data-driven nutrition with operational excellence behind it.",
+    noHiddenFees: "No hidden fees. No long-term lock-in. Pure focus on performance and measurable outcomes.",
     cta: "Get started",
   },
   whoItsFor: {
@@ -136,26 +138,39 @@ const en = {
       },
     ],
   },
+  aboutUs: {
+    title: "Built on Science. Powered by Technology.",
+    description:
+      "NutriFlow was created to remove guesswork from healthy eating. We combine nutrition expertise, smart algorithms, and operational precision to deliver meals that support real results.",
+    missionLabel: "Our mission:",
+    mission: "Make personalized nutrition accessible, scalable, and sustainable.",
+    belief: "We believe food should support your goals, not complicate your life.",
+  },
   faq: {
     title: "Frequently asked questions",
     items: [
       {
-        q: "How long does it take to get my menu?",
-        a: "After submitting your health data, a certified dietitian will review your profile and create your personalized menu within 24-48 hours.",
+        q: "How do I choose a plan?",
+        a: "Start with your goal — weight loss, muscle gain, or balanced nutrition. You can switch anytime.",
       },
       {
-        q: "Can I customize my meals?",
-        a: "Yes! During the health data submission, you can specify dietary restrictions, allergies, food preferences, and goals. Your dietitian will create a menu that fits your needs.",
+        q: "Can I change my meals?",
+        a: "Yes. Customize selections weekly inside the app.",
+      },
+      {
+        q: "Do you support special diets?",
+        a: "We offer vegetarian, high-protein, and allergen-sensitive options.",
+      },
+      {
+        q: "How does delivery work?",
+        a: "Meals are delivered fresh according to your selected schedule.",
       },
       {
         q: "What if I need to cancel?",
         a: "You can cancel your subscription anytime from your profile settings. Your subscription will remain active until the end of your billing period.",
       },
-      {
-        q: "How does delivery work?",
-        a: "Meals are delivered daily to your specified address. You'll receive real-time tracking updates and estimated delivery times through your dashboard.",
-      },
     ],
+    contact: "Still have questions?",
   },
   cta: {
     title: "Ready to transform your nutrition?",
@@ -163,6 +178,20 @@ const en = {
     button: "Get started today",
   },
   footer: {
+    tagline: "Personalized nutrition, delivered daily.",
+    company: "Company",
+    support: "Support",
+    contactTitle: "Contact",
+    links: {
+      about: "About",
+      careers: "Careers",
+      blog: "Blog",
+      press: "Press",
+      faq: "FAQ",
+      contactUs: "Contact us",
+      privacy: "Privacy policy",
+      terms: "Terms of service",
+    },
     copyright: "© 2026 NutriFlow. All rights reserved.",
   },
 } as const;

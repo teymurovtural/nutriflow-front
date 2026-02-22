@@ -81,6 +81,9 @@ export default function Landing() {
             <a href="#pricing" className="text-muted-foreground hover:text-foreground transition">
               {t("nav.pricing")}
             </a>
+            <a href="#about" className="text-muted-foreground hover:text-foreground transition">
+              {t("nav.about")}
+            </a>
             <a href="#faq" className="text-muted-foreground hover:text-foreground transition">
               {t("nav.faq")}
             </a>
@@ -116,7 +119,9 @@ export default function Landing() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
             >
-              {t("hero.title")}
+              {t("hero.titleStart")}
+              <span className="text-primary">{t("hero.titleHighlight")}</span>
+              {t("hero.titleEnd")}
             </motion.h1>
             <motion.p
               initial={{ y: 20, opacity: 0 }}
@@ -319,6 +324,15 @@ export default function Landing() {
               </motion.div>
             ))}
           </div>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="max-w-4xl mx-auto mt-10 text-center text-muted-foreground italic"
+          >
+            {t("howItWorks.tagline")}
+          </motion.p>
         </div>
       </section>
 
@@ -362,6 +376,8 @@ export default function Landing() {
                 <Button className="w-full" size="lg" asChild>
                   <Link to="/register">{t("pricingPreview.cta")}</Link>
                 </Button>
+                <p className="text-sm text-muted-foreground mt-4 text-center">{t("pricingPreview.note")}</p>
+                <p className="text-xs text-muted-foreground mt-2 text-center font-medium">{t("pricingPreview.noHiddenFees")}</p>
               </CardContent>
             </Card>
           </motion.div>
@@ -404,6 +420,26 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* About */}
+      <section id="about" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t("aboutUs.title")}</h2>
+              <p className="text-lg text-muted-foreground mb-6">{t("aboutUs.description")}</p>
+              <p className="text-base font-semibold mb-1">{t("aboutUs.missionLabel")}</p>
+              <p className="text-lg text-primary font-medium mb-6">{t("aboutUs.mission")}</p>
+              <p className="text-muted-foreground italic">{t("aboutUs.belief")}</p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section id="faq" className="py-20 bg-muted">
         <div className="container mx-auto px-4">
@@ -437,6 +473,18 @@ export default function Landing() {
                 </motion.div>
               ))}
             </div>
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5 }}
+              className="text-center mt-8 text-muted-foreground"
+            >
+              {t("faq.contact")}{" "}
+              <a href="mailto:support@nutriflow.com" className="text-primary underline underline-offset-4">
+                support@nutriflow.com
+              </a>
+            </motion.p>
           </div>
         </div>
       </section>

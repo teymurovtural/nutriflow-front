@@ -2,15 +2,17 @@ const az = {
   nav: {
     howItWorks: "Necə işləyir",
     pricing: "Qiymətlər",
+    about: "Haqqımızda",
     faq: "FAQ",
     login: "Daxil ol",
     getStarted: "Başla",
   },
   hero: {
     badge: "Fərdiləşdirilmiş Qidalanma + Katering Çatdırılması",
-    title: "Şəxsi aylıq yemək planınız — hər gün çatdırılır",
-    subtitle:
-      "Mütəxəssis diyetisyenlər sağlamlıq məqsədlərinizə əsasən fərdi aylıq menyular hazırlayır. Təzə yeməklər hər gün qapınıza çatdırılır.",
+    titleStart: "Fərdiləşdirilmiş ",
+    titleHighlight: "Qidalanma",
+    titleEnd: ", Sadələşdirildi",
+    subtitle: "NutriFlow qidalanma planınızı real məlumatlara əsaslanaraq qurur, trendlərə deyil.",
     cta: "Səyahətinizi başladın",
     viewPricing: "Qiymətlərə baxın",
   },
@@ -76,44 +78,44 @@ const az = {
   },
   howItWorks: {
     title: "Necə işləyir",
-    subtitle: "4 sadə addımda başlayın",
+    subtitle: "NutriFlow qidalanma planınızı real məlumatlara əsaslanaraq qurur, trendlərə deyil.",
+    tagline: "Sağlam qidalanma strukturlu hiss etdirilməlidir, stresli yox.",
     steps: [
       {
-        title: "Hesab yaradın",
-        description: "Saniyələr içində qeydiyyatdan keçin və e-poçtunuzu təsdiqləyin.",
+        title: "Özünüz haqqında danışın",
+        description: "Məqsədlərinizi, qidalanma üstünlüklərini, allergiyaları, fəaliyyət səviyyənizi və həyat tərzinizi paylaşın.",
       },
       {
-        title: "Sağlamlıq məlumatlarını göndərin",
-        description:
-          "Sağlamlıq göstəricilərinizi, məqsədlərinizi, qidalanma məhdudiyyətlərini və çatdırılma üstünlüklərini paylaşın.",
+        title: "Ağıllı plan yaradılması",
+        description: "Sistemimiz kalori ehtiyaclarınıza, makrolarınıza və sağlamlıq hədəflərinizə uyğun balanslaşdırılmış yemək planı yaradır.",
       },
       {
-        title: "Fərdi menyunuzu alın",
-        description:
-          "Sertifikatlı diyetisyen profilinizi nəzərdən keçirir və fərdi aylıq yemək planı hazırlayır (24-48 saat).",
+        title: "Təzə yemək çatdırılması",
+        description: "Yeməklər cədvəlinizə uyğun hazırlanır və çatdırılır, qızdırmağa hazır.",
       },
       {
-        title: "Gündəlik çatdırılmadan həzz alın",
-        description:
-          "Hər gün qapınıza çatdırılan təzə yeməklər. Statusu asanlıqla izləyin və abunəliyinizi idarə edin.",
+        title: "İzlə və optimallaşdır",
+        description: "Tətbiqdə irəliləyişi izləyin. İstənilən vaxt məqsədləri dəyişdirin. Planınız sizinlə birlikdə inkişaf edir.",
       },
     ],
   },
   pricingPreview: {
     title: "Sadə, şəffaf qiymətlər",
     subtitle: "Bir plan — hər şey daxildir",
-    planName: "Aylıq Premium",
-    planDescription: "Tam qidalanma və çatdırılma xidməti",
+    planName: "Premium Plan",
+    planDescription: "Ciddi nəticələr üçün tam fərdiləşdirilmiş qidalanma təcrübəsi.",
     price: "1500",
     currency: "AZN/ay",
     features: [
-      "Fərdiləşdirilmiş aylıq menyu",
-      "Sertifikatlı diyetisyen məsləhəti",
-      "Gündəlik yemək çatdırılması (30 gün)",
-      "Real vaxt çatdırılma izləməsi",
-      "Makro və kalori izləməsi",
-      "7/24 müştəri dəstəyi",
+      "Məqsəd və sağlamlıq məlumatlarınıza uyğun fərdi yemək planı",
+      "Gündəlik təzə yemək çatdırılması",
+      "Makro və kalori dəqiqliyi",
+      "Planın davamlı tənzimlənməsi",
+      "Tətbiqdaxili irəliləyiş izləməsi",
+      "Prioritet müştəri dəstəyi",
     ],
+    note: "Bu adi abunəlik deyil. Arxasında əməliyyat mükəmməlliyi olan strukturlaşdırılmış, məlumat əsaslı qidalanmadır.",
+    noHiddenFees: "Gizli ödənişlər yoxdur. Uzunmüddətli bağlılıq yoxdur. Yalnız performansa və ölçülə bilən nəticələrə fokus.",
     cta: "Başla",
   },
   whoItsFor: {
@@ -136,26 +138,39 @@ const az = {
       },
     ],
   },
+  aboutUs: {
+    title: "Elm üzərində qurulmuşdur. Texnologiya ilə gücləndirilib.",
+    description:
+      "NutriFlow sağlam qidalanmadan təxmini aradan qaldırmaq üçün yaradılmışdır. Qidalanma ekspertizasını, ağıllı alqoritmləri və əməliyyat dəqiqliyini birləşdiririk.",
+    missionLabel: "Missiyamız:",
+    mission: "Fərdiləşdirilmiş qidalanmanı əlçatan, miqyaslana bilən və davamlı etmək.",
+    belief: "İnanırıq ki, qidalanma məqsədlərinizi dəstəkləməlidir, həyatınızı çətinləşdirməməlidir.",
+  },
   faq: {
     title: "Tez-tez verilən suallar",
     items: [
       {
-        q: "Menyunu almaq nə qədər vaxt aparır?",
-        a: "Sağlamlıq məlumatlarınızı göndərdikdən sonra sertifikatlı diyetisyen profilinizi nəzərdən keçirəcək və 24-48 saat ərzində fərdi menyunuzu hazırlayacaq.",
+        q: "Planı necə seçim?",
+        a: "Məqsədinizlə başlayın — çəki itirilməsi, əzələ artımı və ya balanslaşdırılmış qidalanma. İstənilən vaxt dəyişdirə bilərsiniz.",
       },
       {
-        q: "Yeməkləri fərdiləşdirə bilərəmmi?",
-        a: "Bəli! Sağlamlıq məlumatlarını doldurarkən qidalanma məhdudiyyətlərini, allergiyaları, yemək üstünlüklərini və məqsədlərini göstərə bilərsiniz. Diyetisyen ehtiyaclarınıza uyğun menyu hazırlayacaq.",
+        q: "Yeməkləri dəyişdirə bilərəmmi?",
+        a: "Bəli. Tətbiqdə həftəlik seçimləri fərdiləşdirin.",
+      },
+      {
+        q: "Xüsusi pəhrizlərə dəstək varmı?",
+        a: "Vegetarian, yüksək zülallı və allergen həssaslığına uyğun variantlar təklif edirik.",
+      },
+      {
+        q: "Çatdırılma necə işləyir?",
+        a: "Yeməklər seçilmiş cədvələ uyğun olaraq təzə çatdırılır.",
       },
       {
         q: "Abunəliyi ləğv etmək istəsəm?",
         a: "Profil parametrlərindən istənilən vaxt abunəliyi ləğv edə bilərsiniz. Abunəlik ödəniş dövrünün sonuna qədər aktiv qalır.",
       },
-      {
-        q: "Çatdırılma necə işləyir?",
-        a: "Yeməklər göstərdiyiniz ünvana gündəlik çatdırılır. İdarəetmə panelindən real vaxt izləmə yeniləmələri və təxmini çatdırılma vaxtları alırsınız.",
-      },
     ],
+    contact: "Hələ suallarınız var?",
   },
   cta: {
     title: "Qidalanmanızı dəyişdirməyə hazırsınız?",
@@ -163,6 +178,20 @@ const az = {
     button: "Bu gün başlayın",
   },
   footer: {
+    tagline: "Fərdiləşdirilmiş qidalanma, hər gün çatdırılır.",
+    company: "Şirkət",
+    support: "Dəstək",
+    contactTitle: "Əlaqə",
+    links: {
+      about: "Haqqımızda",
+      careers: "Karyera",
+      blog: "Bloq",
+      press: "Mətbuat",
+      faq: "FAQ",
+      contactUs: "Bizimlə əlaqə",
+      privacy: "Məxfilik siyasəti",
+      terms: "İstifadə şərtləri",
+    },
     copyright: "© 2026 NutriFlow. Bütün hüquqlar qorunur.",
   },
 } as const;
