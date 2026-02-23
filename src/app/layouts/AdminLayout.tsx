@@ -42,7 +42,7 @@ export default function AdminLayout() {
       <header className="lg:hidden bg-white border-b sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 py-3">
           <Link to="/admin" className="flex items-center gap-2">
-            <Leaf className="size-6 text-primary" />
+            <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
             <span className="font-semibold">NutriFlow Admin</span>
           </Link>
           <Button
@@ -91,7 +91,7 @@ export default function AdminLayout() {
         <div className="flex flex-col h-full">
           <div className="p-6 border-b">
             <Link to="/admin" className="flex items-center gap-2">
-              <ImageWithFallback src={'src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+              <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
               <div>
                 <div className="text-xl font-semibold">NutriFlow</div>
                 <div className="text-xs text-muted-foreground">Admin Panel</div>

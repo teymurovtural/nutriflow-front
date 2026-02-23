@@ -390,12 +390,14 @@ export default function PatientProfile() {
 
               {/* Actions */}
               <div className="flex flex-wrap gap-3">
-                <Button asChild variant="outline">
-                  <Link to={`/dietitian/menu-editor/${userId}/${batch.batchId}`}>
-                    <Calendar className="size-4 mr-2" />
-                    {batch.status === "DRAFT" || batch.status === "REJECTED" ? "Edit Menu" : "View/Edit Menu"}
-                  </Link>
-                </Button>
+                {batch.status !== "APPROVED" && (
+                  <Button asChild variant="outline">
+                    <Link to={`/dietitian/menu-editor/${userId}/${batch.batchId}`}>
+                      <Calendar className="size-4 mr-2" />
+                      {batch.status === "DRAFT" || batch.status === "REJECTED" ? "Edit Menu" : "View/Edit Menu"}
+                    </Link>
+                  </Button>
+                )}
                 {(batch.status === "DRAFT" || batch.status === "REJECTED") && (
                   <Button onClick={handleSubmit} disabled={submitLoading}>
                     {submitLoading ? (

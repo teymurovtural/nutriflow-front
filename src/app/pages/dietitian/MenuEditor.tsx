@@ -18,6 +18,7 @@ import {
   getBatchRejectionReason,
   extractErrorMessage,
   type MealType,
+  type MenuBatchStatus,
   type MenuItemRequest,
   type MenuBatch,
 } from "../../services/dietitianService";
@@ -84,6 +85,13 @@ export default function MenuEditor() {
 
   // Batch state
   const [activeBatchId, setActiveBatchId] = useState<number | null>(existingBatchId);
+  // Tracks the server-side status so we can show Submit only for DRAFT / REJECTED batches.
+  // null = no batch saved yet (new menu before first Save Draft).
+  const [batchStatus, setBatchStatus] = useState<MenuBatchStatus | null>(null);
+  // canSubmit becomes true only after Save Draft succeeds (or when loading an
+  // existing DRAFT/REJECTED batch). This ensures Submit Menu is never shown
+  // before a draft has been successfully persisted.
+  const [canSubmit, setCanSubmit] = useState(false);
   const [rejectionReason, setRejectionReason] = useState<string | null>(null);
   const [initLoading, setInitLoading] = useState(isEditMode);
   const [saveLoading, setSaveLoading] = useState(false);
@@ -94,19 +102,33 @@ export default function MenuEditor() {
     if (!isEditMode || !existingBatchId) return;
     setInitLoading(true);
 
+    // Fetch batch items and rejection reason independently.
+    // getBatchRejectionReason returns 404 when no rejection exists, so we must
+    // never let it abort the main load — catch it and treat as "no reason".
     Promise.all([
       getBatchItems(existingBatchId),
-      getBatchRejectionReason(existingBatchId),
+      getBatchRejectionReason(existingBatchId).catch(() => null),
     ])
       .then(([batchDetails, rejection]) => {
         // Populate year/month/dietaryNotes from batch metadata
         setYear(batchDetails.year);
         setMonth(batchDetails.month);
         setDietaryNotes(batchDetails.dietaryNotes ?? "");
-        // Populate items map from returned batch items
+        setBatchStatus(batchDetails.status);
+        // Populate items map from returned batch items.
+        // Items arrive in arbitrary order from the backend; we key by day+mealType.
+        // If the backend ever returns duplicate day+mealType entries (data anomaly),
+        // we keep the LAST occurrence and emit a console warning so it is discoverable.
         const map = new Map<string, MenuItemRequest>();
         for (const item of batchDetails.items) {
-          map.set(itemKey(item.day, item.mealType), {
+          const key = itemKey(item.day, item.mealType);
+          if (map.has(key)) {
+            console.warn(
+              `[MenuEditor] Duplicate item for day=${item.day} mealType=${item.mealType}. ` +
+              "Keeping last occurrence."
+            );
+          }
+          map.set(key, {
             day: item.day,
             mealType: item.mealType,
             description: item.description,
@@ -117,7 +139,16 @@ export default function MenuEditor() {
           });
         }
         setItems(map);
-        setRejectionReason(rejection.rejectionReason ?? null);
+        setRejectionReason(rejection?.rejectionReason ?? null);
+        // If the loaded batch is already in an editable/submittable state,
+        // unlock Submit Menu immediately without requiring another Save Draft.
+        if (batchDetails.status === "DRAFT" || batchDetails.status === "REJECTED") {
+          setCanSubmit(true);
+        }
+        // Auto-select the first day that has data so the user immediately sees
+        // populated meals instead of landing on an empty day.
+        const days = Array.from(map.values()).map((i) => i.day);
+        if (days.length > 0) setSelectedDay(Math.min(...days));
       })
       .catch((err) => toast.error(extractErrorMessage(err, "Failed to load batch.")))
       .finally(() => setInitLoading(false));
@@ -231,21 +262,34 @@ export default function MenuEditor() {
     }
 
     setSaveLoading(true);
+    const isNew = activeBatchId === null;
     const dto = buildDto(committedItems);
 
-    const operation = activeBatchId
+    // Both createMenu and updateMenuBatch return a MenuBatch so we can unify the
+    // downstream handling (capture status, show correct toast, unlock Submit button).
+    const operation: Promise<MenuBatch> = activeBatchId
       ? updateMenuBatch(activeBatchId, dto)
       : createMenu(dto).then((batch: MenuBatch) => {
           setActiveBatchId(batch.batchId);
+          return batch;
         });
 
     operation
-      .then(() => toast.success(activeBatchId ? "Menu updated." : "Menu draft created."))
+      .then((batch) => {
+        // Sync status from server so Submit button visibility is correct.
+        setBatchStatus(batch.status);
+        // Unlock Submit Menu — only reached on a successful save response.
+        // If this line is not reached (error path), canSubmit stays false.
+        setCanSubmit(true);
+        toast.success(isNew ? "Menu draft created." : "Menu updated.");
+      })
       .catch((err) => toast.error(extractErrorMessage(err, "Failed to save menu.")))
       .finally(() => setSaveLoading(false));
   };
 
   const handleSubmit = () => {
+    // Submit is only reachable when a draft already exists (button is hidden otherwise).
+    if (!activeBatchId) return;
     if (!commitCurrentDay()) return;
     const committedItems = new Map(items);
 
@@ -256,20 +300,11 @@ export default function MenuEditor() {
 
     setSubmitLoading(true);
     const dto = buildDto(committedItems);
+    const batchId = activeBatchId; // capture in closure before any async state updates
 
-    const save = activeBatchId
-      ? updateMenuBatch(activeBatchId, dto)
-      : createMenu(dto).then((batch: MenuBatch) => {
-          setActiveBatchId(batch.batchId);
-          return batch;
-        });
-
-    save
-      .then((result) => {
-        const batchId = activeBatchId ?? (result as MenuBatch)?.batchId;
-        if (!batchId) throw new Error("Could not determine batch ID.");
-        return submitBatch(batchId as number);
-      })
+    // Always persist the latest edits first, then flip status to SUBMITTED.
+    updateMenuBatch(batchId, dto)
+      .then(() => submitBatch(batchId))
       .then(() => {
         toast.success("Menu submitted to patient!");
         navigate(`/dietitian/patients/${userId}`);
@@ -312,6 +347,10 @@ export default function MenuEditor() {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const isPastDay = (day: number) => new Date(year, month - 1, day) < today;
+  // A past day is only "blocked" (unselectable) when it has no loaded data.
+  // In edit mode, past days with existing items must remain clickable so the
+  // dietitian can view and correct them (e.g. day 22 when today is day 23).
+  const isBlockedDay = (day: number) => isPastDay(day) && !(isEditMode && dayHasData(day));
 
   const MONTHS = [
     "January","February","March","April","May","June",
@@ -349,9 +388,15 @@ export default function MenuEditor() {
           <Button variant="outline" onClick={handleSave} disabled={saveLoading || submitLoading}>
             {saveLoading ? <><Loader2 className="size-4 mr-2 animate-spin" />Saving...</> : <><Save className="size-4 mr-2" />Save Draft</>}
           </Button>
-          <Button onClick={handleSubmit} disabled={saveLoading || submitLoading}>
-            {submitLoading ? <><Loader2 className="size-4 mr-2 animate-spin" />Submitting...</> : <><Send className="size-4 mr-2" />Submit Menu</>}
-          </Button>
+          {/* Submit Menu is revealed only after canSubmit becomes true, which
+              happens exclusively on a successful Save Draft response (or when
+              loading an existing DRAFT/REJECTED batch). A failed save keeps
+              this button hidden so the user cannot submit unsaved data. */}
+          {canSubmit && (
+            <Button onClick={handleSubmit} disabled={saveLoading || submitLoading}>
+              {submitLoading ? <><Loader2 className="size-4 mr-2 animate-spin" />Submitting...</> : <><Send className="size-4 mr-2" />Submit Menu</>}
+            </Button>
+          )}
         </div>
       </div>
 
@@ -417,18 +462,28 @@ export default function MenuEditor() {
           <CardContent>
             <div className="space-y-1 max-h-[32rem] overflow-y-auto pr-1">
               {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
-                const past = isPastDay(day);
+                const blocked = isBlockedDay(day);
+                // Past days with data are selectable but visually distinguished.
+                const pastWithData = isPastDay(day) && !blocked;
                 return (
                   <button
                     key={day}
-                    onClick={() => !past && setSelectedDay(day)}
-                    disabled={past}
-                    title={past ? "Past date — cannot edit" : undefined}
+                    onClick={() => !blocked && setSelectedDay(day)}
+                    disabled={blocked}
+                    title={
+                      blocked
+                        ? "Past date — cannot edit"
+                        : pastWithData
+                        ? "Past date with saved meals"
+                        : undefined
+                    }
                     className={`w-full text-left px-3 py-2 rounded-lg transition flex items-center justify-between ${
-                      past
+                      blocked
                         ? "opacity-40 cursor-not-allowed bg-muted text-muted-foreground"
                         : selectedDay === day
                         ? "bg-primary text-primary-foreground"
+                        : pastWithData
+                        ? "bg-muted/60 hover:bg-muted/80 italic"
                         : "bg-muted hover:bg-muted/70"
                     }`}
                   >

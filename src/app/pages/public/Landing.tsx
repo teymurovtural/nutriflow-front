@@ -71,7 +71,7 @@ export default function Landing() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center gap-2 cursor-pointer"
           >
-            <ImageWithFallback src={"src/assets/imgs/NutriFlow-white3.svg"} alt="NutriFlow Logo" className="size-8" />
+            <ImageWithFallback src={"/src/assets/imgs/NutriFlow-white3.svg"} alt="NutriFlow Logo" className="size-8" />
             <span className="text-xl font-semibold">NutriFlow</span>
           </button>
           <nav className="hidden md:flex items-center gap-6">
@@ -511,7 +511,7 @@ export default function Landing() {
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <ImageWithFallback src={"src/assets/imgs/NutriFlow-black3.svg"} alt="NutriFlow Logo" className="size-8" />
+              <ImageWithFallback src={"/src/assets/imgs/NutriFlow-black3.svg"} alt="NutriFlow Logo" className="size-8" />
               <span className="text-lg font-semibold">NutriFlow</span>
             </div>
             <p className="text-sm opacity-80">{t("footer.copyright")}</p>

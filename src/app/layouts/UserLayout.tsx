@@ -39,7 +39,7 @@ export default function UserLayout() {
       <header className="lg:hidden bg-white border-b sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 py-3">
           <Link to="/user" className="flex items-center gap-2">
-            <ImageWithFallback src={'src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+            <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
             <span className="font-semibold">NutriFlow</span>
           </Link>
           <Button
@@ -89,7 +89,7 @@ export default function UserLayout() {
         <div className="flex flex-col h-full">
           <div className="p-6 border-b">
             <Link to="/user" className="flex items-center gap-2">
-              <ImageWithFallback src={'src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+              <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
               <span className="text-xl font-semibold">NutriFlow</span>
             </Link>
           </div>

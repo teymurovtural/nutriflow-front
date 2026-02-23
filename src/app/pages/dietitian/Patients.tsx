@@ -12,8 +12,8 @@ import {
   TableRow,
 } from "../../components/ui/table";
 import { Skeleton } from "../../components/ui/skeleton";
-import { UserLifecycleBadge, MenuStatusBadge } from "../../components/StatusBadges";
-import { Search, Users, AlertCircle } from "lucide-react";
+import { UserLifecycleBadge } from "../../components/StatusBadges";
+import { Search, Users, AlertCircle, Eye, FilePlus } from "lucide-react";
 import { toast } from "sonner";
 import {
   getMyUsers,
@@ -116,7 +116,6 @@ export default function DietitianPatients() {
                     <TableHead>Email</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Goal</TableHead>
-                    <TableHead>Menu Status</TableHead>
                     <TableHead />
                   </TableRow>
                 </TableHeader>
@@ -132,19 +131,16 @@ export default function DietitianPatients() {
                       </TableCell>
                       <TableCell>{patient.goal ?? "—"}</TableCell>
                       <TableCell>
-                        {patient.menuStatus ? (
-                          <MenuStatusBadge status={patient.menuStatus as any} />
-                        ) : (
-                          <span className="text-muted-foreground text-sm">None</span>
-                        )}
-                      </TableCell>
-                      <TableCell>
                         <div className="flex gap-2">
-                          <Button variant="ghost" size="sm" asChild>
-                            <Link to={`/dietitian/patients/${patient.userId}`}>View</Link>
+                          <Button variant="ghost" size="icon" asChild>
+                            <Link to={`/dietitian/patients/${patient.userId}`} title="View patient">
+                              <Eye className="size-4" />
+                            </Link>
                           </Button>
-                          <Button variant="outline" size="sm" asChild>
-                            <Link to={`/dietitian/menu-editor/${patient.userId}`}>Menu</Link>
+                          <Button variant="outline" size="icon" asChild>
+                            <Link to={`/dietitian/menu-editor/${patient.userId}`} title="Create menu">
+                              <FilePlus className="size-4" />
+                            </Link>
                           </Button>
                         </div>
                       </TableCell>
