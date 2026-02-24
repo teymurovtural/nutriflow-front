@@ -488,7 +488,7 @@ export default function PatientProfile() {
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDeleteDialogOpen(false)} disabled={deleteLoading}>
+            <Button variant="outline" onClick={() => setDeleteDialogBatchId(null)} disabled={deleteLoading}>
               Cancel
             </Button>
             <Button variant="destructive" onClick={handleDelete} disabled={deleteLoading}>
