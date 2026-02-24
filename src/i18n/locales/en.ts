@@ -6,13 +6,15 @@ const en = {
     faq: "FAQ",
     login: "Login",
     getStarted: "Get started",
+    language: "Language",
   },
   hero: {
     badge: "Personalized Nutrition + Catering Delivery",
     titleStart: "Personalized ",
     titleHighlight: "Nutrition",
     titleEnd: ", Simplified",
-    subtitle: "NutriFlow builds your nutrition plan around real data, not trends.",
+    subtitle:
+      "NutriFlow builds your nutrition plan around real data, not trends.",
     cta: "Start your journey",
     viewPricing: "View pricing",
   },
@@ -78,24 +80,29 @@ const en = {
   },
   howItWorks: {
     title: "How it works",
-    subtitle: "NutriFlow builds your nutrition plan around real data, not trends.",
+    subtitle:
+      "NutriFlow builds your nutrition plan around real data, not trends.",
     tagline: "Healthy eating should feel structured, not stressful.",
     steps: [
       {
         title: "Tell us about yourself",
-        description: "Share your goals, dietary preferences, allergies, activity level, and lifestyle.",
+        description:
+          "Share your goals, dietary preferences, allergies, activity level, and lifestyle.",
       },
       {
         title: "Smart plan creation",
-        description: "Our system generates a balanced meal plan tailored to your calorie needs, macros, and health targets.",
+        description:
+          "Our system generates a balanced meal plan tailored to your calorie needs, macros, and health targets.",
       },
       {
         title: "Fresh meal delivery",
-        description: "Meals are prepared and delivered on your schedule, ready to heat and enjoy.",
+        description:
+          "Meals are prepared and delivered on your schedule, ready to heat and enjoy.",
       },
       {
         title: "Track and optimize",
-        description: "Monitor progress inside the app. Adjust goals anytime. Your plan evolves with you.",
+        description:
+          "Monitor progress inside the app. Adjust goals anytime. Your plan evolves with you.",
       },
     ],
   },
@@ -103,7 +110,8 @@ const en = {
     title: "Simple, transparent pricing",
     subtitle: "One plan, everything included",
     planName: "Premium Plan",
-    planDescription: "A fully personalized nutrition experience designed for serious results.",
+    planDescription:
+      "A fully personalized nutrition experience designed for serious results.",
     price: "1500",
     currency: "AZN/month",
     features: [
@@ -115,7 +123,8 @@ const en = {
       "Priority customer support",
     ],
     note: "This is not a generic subscription. It is structured, data-driven nutrition with operational excellence behind it.",
-    noHiddenFees: "No hidden fees. No long-term lock-in. Pure focus on performance and measurable outcomes.",
+    noHiddenFees:
+      "No hidden fees. No long-term lock-in. Pure focus on performance and measurable outcomes.",
     cta: "Get started",
   },
   whoItsFor: {
@@ -143,8 +152,10 @@ const en = {
     description:
       "NutriFlow was created to remove guesswork from healthy eating. We combine nutrition expertise, smart algorithms, and operational precision to deliver meals that support real results.",
     missionLabel: "Our mission:",
-    mission: "Make personalized nutrition accessible, scalable, and sustainable.",
-    belief: "We believe food should support your goals, not complicate your life.",
+    mission:
+      "Make personalized nutrition accessible, scalable, and sustainable.",
+    belief:
+      "We believe food should support your goals, not complicate your life.",
   },
   faq: {
     title: "Frequently asked questions",

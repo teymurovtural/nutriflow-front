@@ -6,13 +6,15 @@ const az = {
     faq: "FAQ",
     login: "Daxil ol",
     getStarted: "Başla",
+    language: "Dil",
   },
   hero: {
     badge: "Fərdiləşdirilmiş Qidalanma + Katering Çatdırılması",
     titleStart: "Fərdiləşdirilmiş ",
     titleHighlight: "Qidalanma",
     titleEnd: ", Sadələşdirildi",
-    subtitle: "NutriFlow qidalanma planınızı real məlumatlara əsaslanaraq qurur, trendlərə deyil.",
+    subtitle:
+      "NutriFlow qidalanma planınızı real məlumatlara əsaslanaraq qurur, trendlərə deyil.",
     cta: "Səyahətinizi başladın",
     viewPricing: "Qiymətlərə baxın",
   },
@@ -78,24 +80,29 @@ const az = {
   },
   howItWorks: {
     title: "Necə işləyir",
-    subtitle: "NutriFlow qidalanma planınızı real məlumatlara əsaslanaraq qurur, trendlərə deyil.",
+    subtitle:
+      "NutriFlow qidalanma planınızı real məlumatlara əsaslanaraq qurur, trendlərə deyil.",
     tagline: "Sağlam qidalanma strukturlu hiss etdirilməlidir, stresli yox.",
     steps: [
       {
         title: "Özünüz haqqında danışın",
-        description: "Məqsədlərinizi, qidalanma üstünlüklərini, allergiyaları, fəaliyyət səviyyənizi və həyat tərzinizi paylaşın.",
+        description:
+          "Məqsədlərinizi, qidalanma üstünlüklərini, allergiyaları, fəaliyyət səviyyənizi və həyat tərzinizi paylaşın.",
       },
       {
         title: "Ağıllı plan yaradılması",
-        description: "Sistemimiz kalori ehtiyaclarınıza, makrolarınıza və sağlamlıq hədəflərinizə uyğun balanslaşdırılmış yemək planı yaradır.",
+        description:
+          "Sistemimiz kalori ehtiyaclarınıza, makrolarınıza və sağlamlıq hədəflərinizə uyğun balanslaşdırılmış yemək planı yaradır.",
       },
       {
         title: "Təzə yemək çatdırılması",
-        description: "Yeməklər cədvəlinizə uyğun hazırlanır və çatdırılır, qızdırmağa hazır.",
+        description:
+          "Yeməklər cədvəlinizə uyğun hazırlanır və çatdırılır, qızdırmağa hazır.",
       },
       {
         title: "İzlə və optimallaşdır",
-        description: "Tətbiqdə irəliləyişi izləyin. İstənilən vaxt məqsədləri dəyişdirin. Planınız sizinlə birlikdə inkişaf edir.",
+        description:
+          "Tətbiqdə irəliləyişi izləyin. İstənilən vaxt məqsədləri dəyişdirin. Planınız sizinlə birlikdə inkişaf edir.",
       },
     ],
   },
@@ -103,7 +110,8 @@ const az = {
     title: "Sadə, şəffaf qiymətlər",
     subtitle: "Bir plan — hər şey daxildir",
     planName: "Premium Plan",
-    planDescription: "Ciddi nəticələr üçün tam fərdiləşdirilmiş qidalanma təcrübəsi.",
+    planDescription:
+      "Ciddi nəticələr üçün tam fərdiləşdirilmiş qidalanma təcrübəsi.",
     price: "1500",
     currency: "AZN/ay",
     features: [
@@ -115,7 +123,8 @@ const az = {
       "Prioritet müştəri dəstəyi",
     ],
     note: "Bu adi abunəlik deyil. Arxasında əməliyyat mükəmməlliyi olan strukturlaşdırılmış, məlumat əsaslı qidalanmadır.",
-    noHiddenFees: "Gizli ödənişlər yoxdur. Uzunmüddətli bağlılıq yoxdur. Yalnız performansa və ölçülə bilən nəticələrə fokus.",
+    noHiddenFees:
+      "Gizli ödənişlər yoxdur. Uzunmüddətli bağlılıq yoxdur. Yalnız performansa və ölçülə bilən nəticələrə fokus.",
     cta: "Başla",
   },
   whoItsFor: {
@@ -143,8 +152,10 @@ const az = {
     description:
       "NutriFlow sağlam qidalanmadan təxmini aradan qaldırmaq üçün yaradılmışdır. Qidalanma ekspertizasını, ağıllı alqoritmləri və əməliyyat dəqiqliyini birləşdiririk.",
     missionLabel: "Missiyamız:",
-    mission: "Fərdiləşdirilmiş qidalanmanı əlçatan, miqyaslana bilən və davamlı etmək.",
-    belief: "İnanırıq ki, qidalanma məqsədlərinizi dəstəkləməlidir, həyatınızı çətinləşdirməməlidir.",
+    mission:
+      "Fərdiləşdirilmiş qidalanmanı əlçatan, miqyaslana bilən və davamlı etmək.",
+    belief:
+      "İnanırıq ki, qidalanma məqsədlərinizi dəstəkləməlidir, həyatınızı çətinləşdirməməlidir.",
   },
   faq: {
     title: "Tez-tez verilən suallar",
