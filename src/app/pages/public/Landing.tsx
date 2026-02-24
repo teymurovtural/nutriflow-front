@@ -1,6 +1,4 @@
 ﻿import { Link } from "react-router";
-import logoWhite from "../../../assets/imgs/NutriFlow-white3.svg";
-import logoBlack from "../../../assets/imgs/NutriFlow-black3.svg";
 import { Button } from "../../components/ui/button";
 import {
   Card,
@@ -122,7 +120,7 @@ export default function Landing() {
             className="flex items-center gap-2 cursor-pointer flex-shrink-0"
           >
             <ImageWithFallback
-              src={logoWhite}
+              src="/imgs/NutriFlow-white3.svg"
               alt="NutriFlow Logo"
               className="size-7 md:size-8"
             />
@@ -737,7 +735,7 @@ export default function Landing() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
               <ImageWithFallback
-                src={logoBlack}
+                src="/imgs/NutriFlow-black3.svg"
                 alt="NutriFlow Logo"
                 className="size-8"
               />

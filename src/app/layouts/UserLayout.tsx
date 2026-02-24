@@ -1,6 +1,15 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router";
 import { Button } from "../components/ui/button";
-import { Leaf, LayoutDashboard, Calendar, Package, User, LogOut, Menu, X } from "lucide-react";
+import {
+  Leaf,
+  LayoutDashboard,
+  Calendar,
+  Package,
+  User,
+  LogOut,
+  Menu,
+  X,
+} from "lucide-react";
 import { useState } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
@@ -39,7 +48,11 @@ export default function UserLayout() {
       <header className="lg:hidden bg-white border-b sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 py-3">
           <Link to="/user" className="flex items-center gap-2">
-            <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+            <ImageWithFallback
+              src="/imgs/NutriFlow-white3.svg"
+              alt="NutriFlow Logo"
+              className="size-10"
+            />
             <span className="font-semibold">NutriFlow</span>
           </Link>
           <Button
@@ -47,7 +60,11 @@ export default function UserLayout() {
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+            {mobileMenuOpen ? (
+              <X className="size-5" />
+            ) : (
+              <Menu className="size-5" />
+            )}
           </Button>
         </div>
         {mobileMenuOpen && (
@@ -89,10 +106,16 @@ export default function UserLayout() {
         <div className="flex flex-col h-full">
           <div className="p-6 border-b">
             <Link to="/user" className="flex items-center gap-2">
-              <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+              <ImageWithFallback
+                src="/imgs/NutriFlow-white3.svg"
+                alt="NutriFlow Logo"
+                className="size-10"
+              />
               <div>
                 <div className="text-xl font-semibold">NutriFlow</div>
-                <div className="text-xs text-muted-foreground">User dashboard</div>
+                <div className="text-xs text-muted-foreground">
+                  User dashboard
+                </div>
               </div>
             </Link>
           </div>
