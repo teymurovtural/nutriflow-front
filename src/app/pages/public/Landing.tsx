@@ -1,45 +1,21 @@
 ﻿import { Link } from "react-router";
+import logoWhite from "../../../assets/imgs/NutriFlow-white3.svg";
+import logoBlack from "../../../assets/imgs/NutriFlow-black3.svg";
 import { Button } from "../../components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
-import {
-  Check,
-  Leaf,
-  ChefHat,
-  Calendar,
-  Heart,
-  Clock,
-  Shield,
-  Menu,
-  X,
-} from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
+import { Check, Leaf, ChefHat, Calendar, Heart, Clock, Shield } from "lucide-react";
 import { motion } from "motion/react";
 import { ImageWithFallback } from "../../components/figma/ImageWithFallback";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 import { LANGUAGES, type LangCode } from "../../../i18n";
 import i18n from "../../../i18n";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../components/ui/select";
 
 function LanguageSwitcher() {
   const currentLang = (i18n.language?.slice(0, 2) ?? "en") as LangCode;
   return (
-    <Select
-      value={currentLang}
-      onValueChange={(val) => i18n.changeLanguage(val)}
-    >
-      <SelectTrigger className="w-[80px] h-8 text-sm">
+    <Select value={currentLang} onValueChange={(val) => i18n.changeLanguage(val)}>
+      <SelectTrigger className="w-[65px] h-8 text-xs">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
@@ -55,7 +31,6 @@ function LanguageSwitcher() {
 
 export default function Landing() {
   const { t } = useTranslation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const whatIsCards = [
     {
@@ -75,35 +50,14 @@ export default function Landing() {
     },
   ];
 
-  const featuresBullets1 = t("features.personalizedPlans.bullets", {
-    returnObjects: true,
-  }) as string[];
-  const featuresBullets2 = t("features.freshIngredients.bullets", {
-    returnObjects: true,
-  }) as string[];
-  const featuresBullets3 = t("features.dailyDelivery.bullets", {
-    returnObjects: true,
-  }) as string[];
-  const howItWorksSteps = t("howItWorks.steps", { returnObjects: true }) as {
-    title: string;
-    description: string;
-  }[];
-  const pricingFeatures = t("pricingPreview.features", {
-    returnObjects: true,
-  }) as string[];
-  const whoCards = t("whoItsFor.cards", { returnObjects: true }) as {
-    title: string;
-    description: string;
-  }[];
-  const whoIcons = [
-    <Clock className="size-8" />,
-    <Heart className="size-8" />,
-    <Shield className="size-8" />,
-  ];
-  const faqItems = t("faq.items", { returnObjects: true }) as {
-    q: string;
-    a: string;
-  }[];
+  const featuresBullets1 = t("features.personalizedPlans.bullets", { returnObjects: true }) as string[];
+  const featuresBullets2 = t("features.freshIngredients.bullets", { returnObjects: true }) as string[];
+  const featuresBullets3 = t("features.dailyDelivery.bullets", { returnObjects: true }) as string[];
+  const howItWorksSteps = t("howItWorks.steps", { returnObjects: true }) as { title: string; description: string }[];
+  const pricingFeatures = t("pricingPreview.features", { returnObjects: true }) as string[];
+  const whoCards = t("whoItsFor.cards", { returnObjects: true }) as { title: string; description: string }[];
+  const whoIcons = [<Clock className="size-8" />, <Heart className="size-8" />, <Shield className="size-8" />];
+  const faqItems = t("faq.items", { returnObjects: true }) as { q: string; a: string }[];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary-lighter to-white">
@@ -114,165 +68,58 @@ export default function Landing() {
         transition={{ duration: 0.5 }}
         className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50"
       >
-        <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-2 cursor-pointer flex-shrink-0"
+            className="flex items-center gap-2 cursor-pointer"
           >
-            <ImageWithFallback
-              src="/imgs/NutriFlow-white3.svg"
-              alt="NutriFlow Logo"
-              className="size-7 md:size-8"
-            />
-            <span className="text-lg md:text-xl font-semibold">NutriFlow</span>
+            <ImageWithFallback src={logoWhite} alt="NutriFlow Logo" className="size-8" />
+            <span className="text-xl font-semibold">NutriFlow</span>
           </button>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-4 lg:gap-6">
-            <a
-              href="#how-it-works"
-              className="text-muted-foreground hover:text-foreground transition"
-            >
+          <nav className="hidden md:flex items-center gap-6">
+            <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition">
               {t("nav.howItWorks")}
             </a>
-            <a
-              href="#pricing"
-              className="text-muted-foreground hover:text-foreground transition"
-            >
+            <a href="#pricing" className="text-muted-foreground hover:text-foreground transition">
               {t("nav.pricing")}
             </a>
-            <a
-              href="#about"
-              className="text-muted-foreground hover:text-foreground transition"
-            >
+            <a href="#about" className="text-muted-foreground hover:text-foreground transition">
               {t("nav.about")}
             </a>
-            <a
-              href="#faq"
-              className="text-muted-foreground hover:text-foreground transition"
-            >
+            <a href="#faq" className="text-muted-foreground hover:text-foreground transition">
               {t("nav.faq")}
             </a>
           </nav>
-
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="flex items-center gap-0">
             <LanguageSwitcher />
-            <Button
-              variant="ghost"
-              asChild
-              className="transition-transform hover:scale-105 active:scale-95"
-            >
+            <Button variant="ghost" size="sm" asChild className="transition-transform hover:scale-105 active:scale-95">
               <Link to="/login">{t("nav.login")}</Link>
             </Button>
-            <Button
-              asChild
-              className="transition-transform hover:scale-105 active:scale-95"
-            >
+            <Button size="sm" asChild className="transition-transform hover:scale-105 active:scale-95">
               <Link to="/register">{t("nav.getStarted")}</Link>
             </Button>
           </div>
-
-          {/* Mobile Menu */}
-          <div className="flex md:hidden items-center gap-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                <X className="size-5" />
-              ) : (
-                <Menu className="size-5" />
-              )}
-            </Button>
-          </div>
         </div>
-
-        {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden border-t bg-white/95 backdrop-blur-sm overflow-hidden"
-          >
-            <nav className="container mx-auto px-4 py-6 flex flex-col gap-5">
-              <div className="flex items-center justify-between px-2 pb-3 border-b">
-                <span className="text-sm font-medium text-muted-foreground">
-                  {t("nav.language") || "Language"}
-                </span>
-                <LanguageSwitcher />
-              </div>
-              <a
-                href="#how-it-works"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-muted-foreground hover:text-foreground transition px-2"
-              >
-                {t("nav.howItWorks")}
-              </a>
-              <a
-                href="#pricing"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-muted-foreground hover:text-foreground transition px-2"
-              >
-                {t("nav.pricing")}
-              </a>
-              <a
-                href="#about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-muted-foreground hover:text-foreground transition px-2"
-              >
-                {t("nav.about")}
-              </a>
-              <a
-                href="#faq"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-medium text-muted-foreground hover:text-foreground transition px-2"
-              >
-                {t("nav.faq")}
-              </a>
-              <div className="flex flex-col gap-3 pt-4 border-t mt-2 px-2">
-                <Button
-                  variant="outline"
-                  asChild
-                  className="w-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Link to="/login">{t("nav.login")}</Link>
-                </Button>
-                <Button
-                  asChild
-                  className="w-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Link to="/register">{t("nav.getStarted")}</Link>
-                </Button>
-              </div>
-            </nav>
-          </motion.div>
-        )}
       </motion.header>
 
       {/* Hero + Hero Image side-by-side */}
-      <section className="container mx-auto px-4 md:px-8 lg:px-36 py-5 md:py-8 lg:py-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <section className="container mx-auto px-4 py-5">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-primary-light text-primary px-4 py-2 rounded-full mb-6"
+              className="inline-flex flex-wrap items-center gap-2 bg-primary-light text-primary px-4 py-2 rounded-full mb-6 text-center"
             >
               <Leaf className="size-4" />
-              <span className="text-sm font-medium">{t("hero.badge")}</span>
+              <span className="text-xs sm:text-sm font-medium">{t("hero.badge")}</span>
             </motion.div>
             <motion.h1
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
             >
               {t("hero.titleStart")}
               <span className="text-primary">{t("hero.titleHighlight")}</span>
@@ -292,19 +139,10 @@ export default function Landing() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button
-                size="lg"
-                asChild
-                className="transition-transform hover:scale-105 active:scale-95"
-              >
+              <Button size="lg" asChild className="transition-transform hover:scale-105 active:scale-95">
                 <Link to="/register">{t("hero.cta")}</Link>
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="transition-transform hover:scale-105 active:scale-95"
-              >
+              <Button size="lg" variant="outline" asChild className="transition-transform hover:scale-105 active:scale-95">
                 <Link to="/pricing">{t("hero.viewPricing")}</Link>
               </Button>
             </motion.div>
@@ -313,12 +151,12 @@ export default function Landing() {
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="rounded-2xl overflow-hidden shadow-2xl order-first md:order-last"
+            className="rounded-2xl overflow-hidden shadow-2xl"
           >
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1667499745120-f9bcef8f584e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGh5JTIwbWVhbCUyMHByZXAlMjBjb250YWluZXJzfGVufDF8fHx8MTc3MTQ5NDU2OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
               alt="Healthy meal prep containers with nutritious meals"
-              className="w-full h-[280px] md:h-[400px] lg:h-[480px] object-cover"
+              className="w-full h-[480px] object-cover"
             />
           </motion.div>
         </div>
@@ -334,12 +172,8 @@ export default function Landing() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t("whatIsNutriflow.title")}
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              {t("whatIsNutriflow.description")}
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("whatIsNutriflow.title")}</h2>
+            <p className="text-lg text-muted-foreground">{t("whatIsNutriflow.description")}</p>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {whatIsCards.map((item, index) => {
@@ -380,15 +214,11 @@ export default function Landing() {
               className="grid md:grid-cols-2 gap-12 items-center"
             >
               <div>
-                <h3 className="text-3xl font-bold mb-4">
-                  {t("features.personalizedPlans.title")}
-                </h3>
-                <p className="text-lg text-muted-foreground mb-6">
-                  {t("features.personalizedPlans.description")}
-                </p>
+                <h3 className="text-3xl font-bold mb-4">{t("features.personalizedPlans.title")}</h3>
+                <p className="text-lg text-muted-foreground mb-6">{t("features.personalizedPlans.description")}</p>
                 <ul className="space-y-3">
                   {featuresBullets1.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
+                    <li key={item} className="flex items-center gap-2">
                       <Check className="size-5 text-primary flex-shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -419,15 +249,11 @@ export default function Landing() {
                 />
               </div>
               <div className="md:order-2">
-                <h3 className="text-3xl font-bold mb-4">
-                  {t("features.freshIngredients.title")}
-                </h3>
-                <p className="text-lg text-muted-foreground mb-6">
-                  {t("features.freshIngredients.description")}
-                </p>
+                <h3 className="text-3xl font-bold mb-4">{t("features.freshIngredients.title")}</h3>
+                <p className="text-lg text-muted-foreground mb-6">{t("features.freshIngredients.description")}</p>
                 <ul className="space-y-3">
                   {featuresBullets2.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
+                    <li key={item} className="flex items-center gap-2">
                       <Check className="size-5 text-primary flex-shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -444,15 +270,11 @@ export default function Landing() {
               className="grid md:grid-cols-2 gap-12 items-center"
             >
               <div>
-                <h3 className="text-3xl font-bold mb-4">
-                  {t("features.dailyDelivery.title")}
-                </h3>
-                <p className="text-lg text-muted-foreground mb-6">
-                  {t("features.dailyDelivery.description")}
-                </p>
+                <h3 className="text-3xl font-bold mb-4">{t("features.dailyDelivery.title")}</h3>
+                <p className="text-lg text-muted-foreground mb-6">{t("features.dailyDelivery.description")}</p>
                 <ul className="space-y-3">
                   {featuresBullets3.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
+                    <li key={item} className="flex items-center gap-2">
                       <Check className="size-5 text-primary flex-shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -481,12 +303,8 @@ export default function Landing() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t("howItWorks.title")}
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              {t("howItWorks.subtitle")}
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("howItWorks.title")}</h2>
+            <p className="text-lg text-muted-foreground">{t("howItWorks.subtitle")}</p>
           </motion.div>
           <div className="max-w-4xl mx-auto space-y-8">
             {howItWorksSteps.map((item, index) => (
@@ -530,12 +348,8 @@ export default function Landing() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t("pricingPreview.title")}
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              {t("pricingPreview.subtitle")}
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("pricingPreview.title")}</h2>
+            <p className="text-lg text-muted-foreground">{t("pricingPreview.subtitle")}</p>
           </motion.div>
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
@@ -545,26 +359,17 @@ export default function Landing() {
           >
             <Card className="max-w-md mx-auto border-2 border-primary transition-all hover:shadow-xl hover:-translate-y-1">
               <CardHeader className="text-center">
-                <CardTitle className="text-2xl">
-                  {t("pricingPreview.planName")}
-                </CardTitle>
-                <CardDescription>
-                  {t("pricingPreview.planDescription")}
-                </CardDescription>
+                <CardTitle className="text-2xl">{t("pricingPreview.planName")}</CardTitle>
+                <CardDescription>{t("pricingPreview.planDescription")}</CardDescription>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold">
-                    {t("pricingPreview.price")}
-                  </span>
-                  <span className="text-muted-foreground">
-                    {" "}
-                    {t("pricingPreview.currency")}
-                  </span>
+                  <span className="text-4xl font-bold">{t("pricingPreview.price")}</span>
+                  <span className="text-muted-foreground"> {t("pricingPreview.currency")}</span>
                 </div>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3 mb-6">
                   {pricingFeatures.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3">
+                    <li key={feature} className="flex items-center gap-2">
                       <Check className="size-5 text-primary flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
@@ -573,12 +378,8 @@ export default function Landing() {
                 <Button className="w-full" size="lg" asChild>
                   <Link to="/register">{t("pricingPreview.cta")}</Link>
                 </Button>
-                <p className="text-sm text-muted-foreground mt-4 text-center">
-                  {t("pricingPreview.note")}
-                </p>
-                <p className="text-xs text-muted-foreground mt-2 text-center font-medium">
-                  {t("pricingPreview.noHiddenFees")}
-                </p>
+                <p className="text-sm text-muted-foreground mt-4 text-center">{t("pricingPreview.note")}</p>
+                <p className="text-xs text-muted-foreground mt-2 text-center font-medium">{t("pricingPreview.noHiddenFees")}</p>
               </CardContent>
             </Card>
           </motion.div>
@@ -595,9 +396,7 @@ export default function Landing() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t("whoItsFor.title")}
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("whoItsFor.title")}</h2>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {whoCards.map((item, index) => (
@@ -633,21 +432,11 @@ export default function Landing() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t("aboutUs.title")}
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                {t("aboutUs.description")}
-              </p>
-              <p className="text-base font-semibold mb-1">
-                {t("aboutUs.missionLabel")}
-              </p>
-              <p className="text-lg text-primary font-medium mb-6">
-                {t("aboutUs.mission")}
-              </p>
-              <p className="text-muted-foreground italic">
-                {t("aboutUs.belief")}
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t("aboutUs.title")}</h2>
+              <p className="text-lg text-muted-foreground mb-6">{t("aboutUs.description")}</p>
+              <p className="text-base font-semibold mb-1">{t("aboutUs.missionLabel")}</p>
+              <p className="text-lg text-primary font-medium mb-6">{t("aboutUs.mission")}</p>
+              <p className="text-muted-foreground italic">{t("aboutUs.belief")}</p>
             </motion.div>
           </div>
         </div>
@@ -694,10 +483,7 @@ export default function Landing() {
               className="text-center mt-8 text-muted-foreground"
             >
               {t("faq.contact")}{" "}
-              <a
-                href="mailto:support@nutriflow.com"
-                className="text-primary underline underline-offset-4"
-              >
+              <a href="mailto:support@nutriflow.com" className="text-primary underline underline-offset-4">
                 support@nutriflow.com
               </a>
             </motion.p>
@@ -714,16 +500,9 @@ export default function Landing() {
         className="py-20 bg-primary text-primary-foreground"
       >
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            {t("cta.title")}
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("cta.title")}</h2>
           <p className="text-lg mb-8 opacity-90">{t("cta.subtitle")}</p>
-          <Button
-            size="lg"
-            variant="secondary"
-            asChild
-            className="transition-transform hover:scale-105 active:scale-95"
-          >
+          <Button size="lg" variant="secondary" asChild className="transition-transform hover:scale-105 active:scale-95">
             <Link to="/register">{t("cta.button")}</Link>
           </Button>
         </div>
@@ -733,12 +512,8 @@ export default function Landing() {
       <footer className="bg-foreground text-background">
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
-              <ImageWithFallback
-                src="/imgs/NutriFlow-black3.svg"
-                alt="NutriFlow Logo"
-                className="size-8"
-              />
+            <div className="flex items-center gap-0">
+              <ImageWithFallback src={logoBlack} alt="NutriFlow Logo" className="size-8" />
               <span className="text-lg font-semibold">NutriFlow</span>
             </div>
             <p className="text-sm opacity-80">{t("footer.copyright")}</p>

@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Textarea } from "../../components/ui/textarea";
 import { Skeleton } from "../../components/ui/skeleton";
 import { DeliveryStatusBadge } from "../../components/StatusBadges";
-import { Search, Clock, XCircle, RefreshCw, AlertCircle, Package, Loader2 } from "lucide-react";
+import { Search, Clock, XCircle, RefreshCw, AlertCircle, Package, Loader2, UtensilsCrossed } from "lucide-react";
 import { toast } from "sonner";
 import {
   getDeliveries,
@@ -48,6 +48,9 @@ export default function CatererToday() {
   const [estimateDelivery, setEstimateDelivery] = useState<CatererDelivery | null>(null);
   const [estimateTime, setEstimateTime] = useState("");
   const [estimateLoading, setEstimateLoading] = useState(false);
+
+  // Meals dialog
+  const [mealsDelivery, setMealsDelivery] = useState<CatererDelivery | null>(null);
 
   // Mark failed dialog
   const [failDelivery, setFailDelivery] = useState<CatererDelivery | null>(null);
@@ -351,6 +354,17 @@ export default function CatererToday() {
                             >
                               <Clock className="size-4 text-muted-foreground" />
                             </Button>
+                            {/* View Meals */}
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="size-8"
+                              title="View meals"
+                              onClick={() => setMealsDelivery(delivery)}
+                              disabled={isRowLoading}
+                            >
+                              <UtensilsCrossed className="size-4 text-primary" />
+                            </Button>
                             {/* Mark failed */}
                             <Button
                               variant="ghost"
@@ -454,6 +468,27 @@ export default function CatererToday() {
             <Button variant="destructive" onClick={handleMarkFailed} disabled={failLoading}>
               {failLoading ? <><Loader2 className="size-4 mr-2 animate-spin" />Submitting...</> : "Mark as Failed"}
             </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      {/* Meals Dialog */}
+      <Dialog open={!!mealsDelivery} onOpenChange={(open) => { if (!open) setMealsDelivery(null); }}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Meals — {mealsDelivery?.clientFullName}</DialogTitle>
+            <DialogDescription>Delivery #{mealsDelivery?.deliveryId} · {mealsDelivery?.deliveryDate}</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3 mt-2">
+            {mealsDelivery?.meals?.length === 0 && <p className="text-muted-foreground text-sm">No meals info available.</p>}
+            {mealsDelivery?.meals?.map((meal, i) => (
+              <div key={i} className="rounded-lg border p-3">
+                <p className="font-medium text-sm">{meal.type}</p>
+                <p className="text-muted-foreground text-sm mt-1">{meal.description}</p>
+              </div>
+            ))}
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setMealsDelivery(null)}>Close</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

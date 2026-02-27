@@ -292,7 +292,7 @@ export default function AdminDietitians() {
             </div>
             <div className="space-y-2">
               <Label>Phone</Label>
-              <Input type="tel" placeholder="+994 55-000-00-00" value={editForm.phoneNumber} onChange={(e) => setEditForm({ ...editForm, phoneNumber: e.target.value })} />
+              <Input type="tel" placeholder="+994XXXXXXXXX" value={editForm.phoneNumber} onChange={(e) => setEditForm({ ...editForm, phoneNumber: e.target.value })} />
             </div>
             <div className="space-y-2 col-span-2">
               <Label>Specialization</Label>
@@ -351,7 +351,7 @@ export default function AdminDietitians() {
             </div>
             <div className="space-y-2">
               <Label>Phone</Label>
-              <Input type="tel" placeholder="+994 55-000-00-00" value={form.phoneNumber} onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })} />
+              <Input type="tel" placeholder="+994XXXXXXXXX" value={form.phoneNumber} onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })} />
             </div>
             <div className="space-y-2 col-span-2">
               <Label>Specialization</Label>

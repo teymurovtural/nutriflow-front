@@ -1,15 +1,11 @@
+import logoWhite from '../../../assets/imgs/NutriFlow-white3.svg';
+import logoBlack from '../../../assets/imgs/NutriFlow-black3.svg';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../../components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
 import { Leaf, Mail, Lock, Chrome, Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
 import { motion } from "motion/react";
@@ -32,17 +28,16 @@ export default function Login() {
     try {
       const data = await authService.login({ email, password });
       toast.success("Login successful!");
-
+      
       // Role-based redirect using the role returned from the API
       const role: string = data?.role?.toLowerCase() ?? "";
-      if (role === "admin" || role === "super_admin") navigate("/admin");
+      if (role === "admin" || role === 'super_admin') navigate("/admin");
       else if (role === "dietitian") navigate("/dietitian");
       else if (role === "caterer") navigate("/caterer");
       else navigate("/user");
     } catch (err: any) {
       const message =
-        err?.response?.data?.message ??
-        "Login failed. Please check your credentials.";
+        err?.response?.data?.message ?? "Login failed. Please check your credentials.";
       setError(message);
     } finally {
       setLoading(false);
@@ -55,10 +50,8 @@ export default function Login() {
 
   return (
     <div className="h-screen overflow-hidden bg-gradient-to-br from-primary-lighter to-white flex items-center justify-center px-6 lg:px-10">
-      <div
-        className="w-full max-w-5xl flex gap-10 items-stretch"
-        style={{ height: "min(680px, calc(100vh - 3rem))" }}
-      >
+      <div className="w-full max-w-5xl flex gap-10 items-stretch" style={{ height: "min(680px, calc(100vh - 3rem))" }}>
+
         {/* Left — Image panel */}
         <motion.div
           initial={{ x: -30, opacity: 0 }}
@@ -73,13 +66,8 @@ export default function Login() {
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex flex-col justify-end p-8 text-white">
-              <h2 className="text-2xl font-bold mb-2 leading-snug">
-                Precision Nutrition, Delivered.
-              </h2>
-              <p className="text-sm opacity-85 leading-relaxed">
-                Join 50,000+ members who have optimized their health through
-                science-backed meal planning.
-              </p>
+              <h2 className="text-2xl font-bold mb-2 leading-snug">Precision Nutrition, Delivered.</h2>
+              <p className="text-sm opacity-85 leading-relaxed">Join 50,000+ members who have optimized their health through science-backed meal planning.</p>
             </div>
           </div>
         </motion.div>
@@ -93,11 +81,7 @@ export default function Login() {
         >
           <div className="text-center mb-6">
             <Link to="/" className="inline-flex items-center gap-2">
-              <ImageWithFallback
-                src="/imgs/NutriFlow-white3.svg"
-                alt="NutriFlow Logo"
-                className="size-10"
-              />
+              <ImageWithFallback src={logoWhite} alt="NutriFlow Logo" className="size-10" />
               <span className="text-2xl font-bold">NutriFlow</span>
             </Link>
           </div>
@@ -105,9 +89,7 @@ export default function Login() {
           <Card>
             <CardHeader>
               <CardTitle>Welcome back</CardTitle>
-              <CardDescription>
-                Sign in to your account to continue
-              </CardDescription>
+              <CardDescription>Sign in to your account to continue</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleLogin} className="space-y-4">
@@ -146,35 +128,22 @@ export default function Login() {
                       className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                       tabIndex={-1}
                     >
-                      {showPassword ? (
-                        <EyeOff className="size-4" />
-                      ) : (
-                        <Eye className="size-4" />
-                      )}
+                      {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                     </button>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between text-sm">
-                  <Link
-                    to="/forgot-password"
-                    className="text-primary hover:underline"
-                  >
+                  <Link to="/forgot-password" className="text-primary hover:underline">
                     Forgot password?
                   </Link>
                 </div>
 
                 {error && (
-                  <p className="text-sm text-destructive text-center">
-                    {error}
-                  </p>
+                  <p className="text-sm text-destructive text-center">{error}</p>
                 )}
 
-                <Button
-                  type="submit"
-                  className="w-full transition-transform hover:scale-105 active:scale-95"
-                  disabled={loading}
-                >
+                <Button type="submit" className="w-full transition-transform hover:scale-105 active:scale-95" disabled={loading}>
                   {loading ? "Signing in..." : "Sign in"}
                 </Button>
               </form>
@@ -184,67 +153,31 @@ export default function Login() {
                   <div className="w-full border-t"></div>
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">
-                    Or continue with
-                  </span>
+                  <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
                 </div>
               </div>
 
-              <Button
-                variant="outline"
-                className="w-full transition-transform hover:scale-105 active:scale-95"
-                onClick={handleGoogleLogin}
-              >
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  stroke-width="0"
-                  version="1.1"
-                  x="0px"
-                  y="0px"
-                  viewBox="0 0 48 48"
-                  enable-background="new 0 0 48 48"
-                  height="200px"
-                  width="200px"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill="#FFC107"
-                    d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
+              <Button variant="outline" className="w-full transition-transform hover:scale-105 active:scale-95" onClick={handleGoogleLogin}>
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" x="0px" y="0px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" height="200px" width="200px" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
                     c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
-                    c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
-                  ></path>
-                  <path
-                    fill="#FF3D00"
-                    d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
-                    C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
-                  ></path>
-                  <path
-                    fill="#4CAF50"
-                    d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
-                    c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
-                  ></path>
-                  <path
-                    fill="#1976D2"
-                    d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
-                    c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
-                  ></path>
+                    c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
+                    C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"></path><path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36
+                    c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"></path><path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571
+                    c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
                 </svg>
                 Continue with Google
               </Button>
 
               <p className="text-center text-sm text-muted-foreground mt-6">
                 Don't have an account?{" "}
-                <Link
-                  to="/register"
-                  className="text-primary hover:underline font-medium"
-                >
+                <Link to="/register" className="text-primary hover:underline font-medium">
                   Sign up
                 </Link>
               </p>
             </CardContent>
           </Card>
         </motion.div>
+
       </div>
     </div>
   );
