@@ -360,7 +360,7 @@ export default function AdminUsers() {
               <Label>Phone Number</Label>
               <Input
                 type="tel"
-                placeholder="+994 55-000-00-00"
+                placeholder="+994XXXXXXXXX"
                 value={form.phoneNumber}
                 onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })}
               />

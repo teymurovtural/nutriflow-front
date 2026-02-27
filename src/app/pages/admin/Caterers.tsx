@@ -281,7 +281,7 @@ export default function AdminCaterers() {
             </div>
             <div className="space-y-2">
               <Label>Phone</Label>
-              <Input type="tel" placeholder="+994 55-000-00-00" value={editForm.phone} onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })} />
+              <Input type="tel" placeholder="+994XXXXXXXXX" value={editForm.phone} onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })} />
             </div>
             <div className="space-y-2 col-span-2">
               <Label>Address</Label>
@@ -336,7 +336,7 @@ export default function AdminCaterers() {
             </div>
             <div className="space-y-2">
               <Label>Phone</Label>
-              <Input type="tel" placeholder="+994 55-000-00-00" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+              <Input type="tel" placeholder="+994XXXXXXXXX" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
             </div>
             <div className="space-y-2 col-span-2">
               <Label>Address</Label>

@@ -1,3 +1,5 @@
+import logoWhite from '../../../assets/imgs/NutriFlow-white3.svg';
+import logoBlack from '../../../assets/imgs/NutriFlow-black3.svg';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
@@ -73,8 +75,8 @@ export default function Register() {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-primary-lighter to-white overflow-x-hidden flex items-center justify-center px-6 lg:px-10">
-      <div className="w-full max-w-5xl flex gap-10 items-strectch" style={{ height: "min(680px, calc(100vh - 3rem))" }}>
+    <div className="min-h-screen bg-gradient-to-br from-primary-lighter to-white overflow-x-hidden flex items-center justify-center px-6 lg:px-10 py-6">
+      <div className="w-full max-w-5xl flex gap-10 items-strectch" >
         {/* Left — Sticky image panel */}
         <motion.div
           initial={{ x: -30, opacity: 0 }}
@@ -107,7 +109,7 @@ export default function Register() {
 
             <div className="text-center mb-5">
               <Link to="/" className="inline-flex items-center gap-2">
-                <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+                <ImageWithFallback src={logoWhite} alt="NutriFlow Logo" className="size-10" />
                 <span className="text-2xl font-bold">NutriFlow</span>
               </Link>
             </div>
@@ -174,7 +176,7 @@ export default function Register() {
                         id="phone"
                         name="phone"
                         type="tel"
-                        placeholder="+994 (55) 000-00-00"
+                        placeholder="+994XXXXXXXXX"
                         value={formData.phone}
                         onChange={handleChange}
                         className="pl-10 transition-all focus:ring-2 focus:ring-primary"

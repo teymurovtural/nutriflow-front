@@ -1,3 +1,5 @@
+import logoWhite from '../../../assets/imgs/NutriFlow-white3.svg';
+import logoBlack from '../../../assets/imgs/NutriFlow-black3.svg';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Button } from "../../components/ui/button";
@@ -79,7 +81,7 @@ export default function Login() {
         >
           <div className="text-center mb-6">
             <Link to="/" className="inline-flex items-center gap-2">
-              <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+              <ImageWithFallback src={logoWhite} alt="NutriFlow Logo" className="size-10" />
               <span className="text-2xl font-bold">NutriFlow</span>
             </Link>
           </div>

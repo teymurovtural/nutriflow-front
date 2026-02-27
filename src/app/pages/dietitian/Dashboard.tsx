@@ -128,7 +128,7 @@ export default function DietitianDashboard() {
           ) : (
             <div className="space-y-3">
               {urgentPatients.map((patient) => (
-                <div key={patient.userId} className="flex items-center justify-between p-4 bg-warning-light rounded-lg">
+                <div key={patient.userId} className="flex flex-col gap-3 p-4 bg-warning-light rounded-lg">
                   <div className="flex items-center gap-3">
                     <div className="size-10 rounded-full bg-warning text-warning-foreground flex items-center justify-center font-semibold">
                       {[patient.firstName[0], patient.lastName[0]].join("")}
@@ -141,7 +141,7 @@ export default function DietitianDashboard() {
                       </div>
                     </div>
                   </div>
-                  <Button asChild>
+                  <Button asChild className="w-full">
                     <Link to={`/dietitian/menu-editor/${patient.userId}`}>
                       Create Menu
                       <ArrowRight className="size-4 ml-2" />

@@ -1,3 +1,5 @@
+import logoWhite from '../../../assets/imgs/NutriFlow-white3.svg';
+import logoBlack from '../../../assets/imgs/NutriFlow-black3.svg';
 import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "../../components/ui/button";
@@ -28,7 +30,7 @@ export default function Pricing() {
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+            <ImageWithFallback src={logoWhite} alt="NutriFlow Logo" className="size-10" />
             <span className="text-xl font-semibold">NutriFlow</span>
           </Link>
           {/* <div className="flex items-center gap-3">
@@ -146,7 +148,7 @@ export default function Pricing() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
-              <ImageWithFallback src={'/src/assets/imgs/NutriFlow-black3.svg'} alt="NutriFlow Logo" className="size-10" />
+              <ImageWithFallback src={logoBlack} alt="NutriFlow Logo" className="size-10" />
               <span className="font-semibold text-primary">NutriFlow</span>
             </div>
             <p className="text-sm opacity-80">© 2026 NutriFlow. All rights reserved.</p>

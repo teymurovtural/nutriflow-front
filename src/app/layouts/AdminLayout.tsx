@@ -1,3 +1,5 @@
+import logoWhite from '../../assets/imgs/NutriFlow-white3.svg';
+import logoBlack from '../../assets/imgs/NutriFlow-black3.svg';
 import { Outlet, Link, useLocation, useNavigate } from "react-router";
 import { Button } from "../components/ui/button";
 import { Leaf, LayoutDashboard, Users, ChefHat, Truck, Calendar, CreditCard, FileText, Wrench, LogOut, Menu, X, User } from "lucide-react";
@@ -42,7 +44,7 @@ export default function AdminLayout() {
       <header className="lg:hidden bg-white border-b sticky top-0 z-50">
         <div className="flex items-center justify-between px-4 py-3">
           <Link to="/admin" className="flex items-center gap-2">
-            <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+            <ImageWithFallback src={logoWhite} alt="NutriFlow Logo" className="size-10" />
             <span className="font-semibold">NutriFlow Admin</span>
           </Link>
           <Button
@@ -91,7 +93,7 @@ export default function AdminLayout() {
         <div className="flex flex-col h-full">
           <div className="p-6 border-b">
             <Link to="/admin" className="flex items-center gap-2">
-              <ImageWithFallback src={'/src/assets/imgs/NutriFlow-white3.svg'} alt="NutriFlow Logo" className="size-10" />
+              <ImageWithFallback src={logoWhite} alt="NutriFlow Logo" className="size-10" />
               <div>
                 <div className="text-xl font-semibold">NutriFlow</div>
                 <div className="text-xs text-muted-foreground">Admin Panel</div>

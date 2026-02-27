@@ -162,7 +162,7 @@ export default function DietitianProfile() {
             <Label>Phone Number</Label>
             <Input
               type="tel"
-              placeholder="+994501234567"
+              placeholder="+994XXXXXXXXX"
               value={formData.phoneNumber}
               onChange={(e) => handleChange("phoneNumber", e.target.value)}
             />

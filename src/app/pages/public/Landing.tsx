@@ -15,7 +15,7 @@ function LanguageSwitcher() {
   const currentLang = (i18n.language?.slice(0, 2) ?? "en") as LangCode;
   return (
     <Select value={currentLang} onValueChange={(val) => i18n.changeLanguage(val)}>
-      <SelectTrigger className="w-[80px] h-8 text-sm">
+      <SelectTrigger className="w-[65px] h-8 text-xs">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
@@ -90,12 +90,12 @@ export default function Landing() {
               {t("nav.faq")}
             </a>
           </nav>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-0">
             <LanguageSwitcher />
-            <Button variant="ghost" asChild className="transition-transform hover:scale-105 active:scale-95">
+            <Button variant="ghost" size="sm" asChild className="transition-transform hover:scale-105 active:scale-95">
               <Link to="/login">{t("nav.login")}</Link>
             </Button>
-            <Button asChild className="transition-transform hover:scale-105 active:scale-95">
+            <Button size="sm" asChild className="transition-transform hover:scale-105 active:scale-95">
               <Link to="/register">{t("nav.getStarted")}</Link>
             </Button>
           </div>
@@ -103,23 +103,23 @@ export default function Landing() {
       </motion.header>
 
       {/* Hero + Hero Image side-by-side */}
-      <section className="container mx-auto px-36 py-5">
+      <section className="container mx-auto px-4 py-5">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-primary-light text-primary px-4 py-2 rounded-full mb-6"
+              className="inline-flex flex-wrap items-center gap-2 bg-primary-light text-primary px-4 py-2 rounded-full mb-6 text-center"
             >
               <Leaf className="size-4" />
-              <span className="text-sm font-medium">{t("hero.badge")}</span>
+              <span className="text-xs sm:text-sm font-medium">{t("hero.badge")}</span>
             </motion.div>
             <motion.h1
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
             >
               {t("hero.titleStart")}
               <span className="text-primary">{t("hero.titleHighlight")}</span>
@@ -218,7 +218,7 @@ export default function Landing() {
                 <p className="text-lg text-muted-foreground mb-6">{t("features.personalizedPlans.description")}</p>
                 <ul className="space-y-3">
                   {featuresBullets1.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
+                    <li key={item} className="flex items-center gap-2">
                       <Check className="size-5 text-primary flex-shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -253,7 +253,7 @@ export default function Landing() {
                 <p className="text-lg text-muted-foreground mb-6">{t("features.freshIngredients.description")}</p>
                 <ul className="space-y-3">
                   {featuresBullets2.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
+                    <li key={item} className="flex items-center gap-2">
                       <Check className="size-5 text-primary flex-shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -274,7 +274,7 @@ export default function Landing() {
                 <p className="text-lg text-muted-foreground mb-6">{t("features.dailyDelivery.description")}</p>
                 <ul className="space-y-3">
                   {featuresBullets3.map((item) => (
-                    <li key={item} className="flex items-center gap-3">
+                    <li key={item} className="flex items-center gap-2">
                       <Check className="size-5 text-primary flex-shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -369,7 +369,7 @@ export default function Landing() {
               <CardContent>
                 <ul className="space-y-3 mb-6">
                   {pricingFeatures.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3">
+                    <li key={feature} className="flex items-center gap-2">
                       <Check className="size-5 text-primary flex-shrink-0" />
                       <span>{feature}</span>
                     </li>
@@ -512,7 +512,7 @@ export default function Landing() {
       <footer className="bg-foreground text-background">
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-0">
               <ImageWithFallback src={logoBlack} alt="NutriFlow Logo" className="size-8" />
               <span className="text-lg font-semibold">NutriFlow</span>
             </div>
